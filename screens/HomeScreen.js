@@ -1,12 +1,14 @@
 import React from 'react';
-import {Image, StyleSheet, Text, View} from "react-native";
-import {Stack} from "@react-native-material/core";
+import {SafeAreaView, StyleSheet, Text, View} from "react-native";
+import GlobalStyles from "../GlobalStyles";
 
 const HomeScreen = () => {
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={GlobalStyles.droidSafeArea}>
+            <View style={GlobalStyles.container}>
                 <Text>Tiên phong về công nghệ giáo dục</Text>
-        </View>
+            </View>
+        </SafeAreaView>
     );
 };
 

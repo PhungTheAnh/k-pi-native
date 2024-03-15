@@ -10,6 +10,8 @@ import {
 import GlobalStyles from "../GlobalStyles";
 import {Stack} from "@react-native-material/core";
 import {useNavigation} from "@react-navigation/native";
+import {Field, Form, Formik} from "formik";
+import SignUpSchema from "../validation"
 const RegisterScreen = () => {
     const navigation = useNavigation()
     const [text, onChangeText] = useState('');
@@ -18,8 +20,42 @@ const RegisterScreen = () => {
         <SafeAreaView style={GlobalStyles.droidSafeArea}>
             <View style={GlobalStyles.container}>
                 <View style={{flex: 1, marginTop: 48}}>
-                    <Text style={GlobalStyles.title.login}>Đăng ký </Text>
+                    <Text style={GlobalStyles.title.login}>Đăng ký</Text>
                     <Stack mb={16} spacing={24}>
+                        <Formik
+                            initialValues={{
+                                phoneNumber: '',
+                                password: '',
+                                code: '',
+                            }}
+                            validationSchema={SignUpSchema}
+                            onSubmit={values => {
+                                // same shape as initial values
+                                console.log(values);
+                            }}
+                        >
+                            {({ errors, touched }) => (
+                                <Form>
+                                    <Field name="phoneNumber" />
+                                    {errors.phoneNumber && touched.phoneNumber ? (
+                                        <Text>{errors.phoneNumber}</Text>
+                                    ) : null}
+                                    <Field name="password" />
+                                    {errors.password && touched.password ? (
+                                        <Text>{errors.password}</Text>
+                                    ) : null}
+                                    <Field name="code" type="number" />
+                                    {errors.email && touched.email ? <Text>{errors.email}</Text> : null}
+                                    {/*<button type="submit">Submit</button>*/}
+                                    {/*<TouchableOpacity disabled={!(text !== "" && password !== "")}>*/}
+                                    {/*    <Text*/}
+                                    {/*        style={text !== "" && password !== "" ? GlobalStyles.button : GlobalStyles.buttonDisabled}>*/}
+                                    {/*        Đăng ký*/}
+                                    {/*    </Text>*/}
+                                    {/*</TouchableOpacity>*/}
+                                </Form>
+                            )}
+                        </Formik>
                         <Stack spacing={6}>
                             <Text style={GlobalStyles.title.bodyMedium}>
                                 Số điện thoại
@@ -53,12 +89,7 @@ const RegisterScreen = () => {
                         <Text style={[GlobalStyles.title["primary-kpi-semibold"], GlobalStyles.title.inRight]}>Quên mật
                             khẩu?</Text>
                     </Stack>
-                    <TouchableOpacity disabled={!(text !== "" && password !== "")}>
-                        <Text
-                            style={text !== "" && password !== "" ? GlobalStyles.button : GlobalStyles.buttonDisabled}>
-                            Đăng ký
-                        </Text>
-                    </TouchableOpacity>
+
                     <Stack mt={30}>
                         <Text>Bạn đã có tài khoản? <Text style={GlobalStyles.title["primary-kpi-semibold"]}
                                                          onPress={() => {

@@ -64,6 +64,12 @@ export default StyleSheet.create({
             fontWeight: "500",
             lineHeight: 22,
         },
+        bodyRegular: {
+            color: "#434343",
+            fontSize: 14,
+            fontWeight: "400",
+            lineHeight: 22,
+        },
         star: {
             color: "#F5222D"
         },

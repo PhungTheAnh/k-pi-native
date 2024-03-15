@@ -6,7 +6,7 @@ import {
     TextInput,
     View,
     TouchableOpacity,
-     Dimensions
+    Dimensions
 } from "react-native";
 import GlobalStyles from "../GlobalStyles";
 import {Stack} from "@react-native-material/core";
@@ -23,7 +23,7 @@ const LoginScreen = () => {
     return (
         <SafeAreaView style={GlobalStyles.droidSafeArea}>
             <KeyboardAwareScrollView
-                style={{flex : 1}}>
+                style={{flex: 1}}>
                 <View style={[GlobalStyles.container, {height: SCREEN_HEIGHT}]}>
                     <View style={{flex: 1, marginTop: 48}}>
                         <Text style={GlobalStyles.title.login}>Đăng nhập</Text>
@@ -37,7 +37,7 @@ const LoginScreen = () => {
                                     style={[GlobalStyles.input, GlobalStyles.title.h6Regular]}
                                     onChangeText={onChangeText}
                                     value={text}
-                                    placeholder="Nguyễn văn A"
+                                    placeholder="nguyenvana"
                                     keyboardType="default"
                                 />
                             </Stack>
@@ -55,7 +55,10 @@ const LoginScreen = () => {
                                     secureTextEntry={true}
                                 />
                             </Stack>
-                            <Text style={[GlobalStyles.title["primary-kpi-semibold"], GlobalStyles.title.inRight]}>Quên
+                            <Text style={[GlobalStyles.title["primary-kpi-semibold"], GlobalStyles.title.inRight]}
+                                  onPress={() => {
+                                      navigation.navigate("ForgetPw")
+                                  }}>Quên
                                 mật
                                 khẩu?</Text>
                         </Stack>

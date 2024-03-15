@@ -5,6 +5,8 @@ import BannerScreen from "./screens/BannerScreen";
 import HomeScreen from "./screens/HomeScreen";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
+import ForgetPwScreen from "./screens/ForgetPwScreen";
+import OtpScreen from "./screens/OtpScreen";
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -22,6 +24,8 @@ export default function App() {
                           <Stack.Screen name="Banner" component={BannerScreen} />
                   }
                   <Stack.Screen name="Register" component={RegisterScreen} />
+                  <Stack.Screen name="ForgetPw" component={ForgetPwScreen} />
+                  <Stack.Screen name="Otp" component={OtpScreen} />
                   <Stack.Screen name="Home" component={HomeScreen} />
               </Stack.Navigator>
           </NavigationContainer>

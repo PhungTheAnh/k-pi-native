@@ -16,7 +16,7 @@ import {OtpInput} from "react-native-otp-entry";
 
 const ForgetPwScreen = () => {
     const navigation = useNavigation()
-    const [otp, onChangeOtp] = useState('');
+     const [otp, onChangeOtp] = useState('');
     const SCREEN_HEIGHT = Dimensions.get("window").height;
     return (
         <SafeAreaView style={GlobalStyles.droidSafeArea}>
@@ -27,7 +27,7 @@ const ForgetPwScreen = () => {
                 }}>
                 <View style={[GlobalStyles.container, {height: SCREEN_HEIGHT}]}>
                     <View style={{flex: 1, marginTop: 48}}>
-                        <Stack style={styles.back}>
+                        <Stack style={GlobalStyles.back}>
                             <IconFeather name="chevron-left" size={24} color="#1F1F1F" onPress={() => {
                                 navigation.goBack()
                             }}/>
@@ -59,7 +59,7 @@ const ForgetPwScreen = () => {
                             <Text
                                 style={otp.length === 6 ? GlobalStyles.button : GlobalStyles.buttonDisabled}
                                 onPress={() => {
-                                    navigation.navigate("Login")
+                                    navigation.navigate("NewPw")
                                 }}>
                                 Xác nhận
                             </Text>
@@ -85,12 +85,6 @@ const styles = StyleSheet.create({
     label: {
         margin: 0,
     },
-    back: {
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between"
-    }
 });
 
 export default ForgetPwScreen;

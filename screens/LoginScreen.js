@@ -13,6 +13,7 @@ import {Stack} from "@react-native-material/core";
 import CheckBox from "react-native-check-box";
 import {useNavigation} from "@react-navigation/native";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
+import IconFeather from "react-native-vector-icons/Feather"
 
 const LoginScreen = () => {
     const navigation = useNavigation()
@@ -20,6 +21,11 @@ const LoginScreen = () => {
     const [password, onChangePassword] = useState('');
     const [isSelected, setSelection] = useState(false);
     const SCREEN_HEIGHT = Dimensions.get("window").height;
+
+    const [showPassword, setShowPassword] = useState(false);
+    const toggleShowPassword = () => {
+        setShowPassword(!showPassword);
+    };
     return (
         <SafeAreaView style={GlobalStyles.droidSafeArea}>
             <KeyboardAwareScrollView
@@ -46,14 +52,22 @@ const LoginScreen = () => {
                                     Mật khẩu
                                     <Text style={GlobalStyles.title.star}>*</Text>
                                 </Text>
-                                <TextInput
-                                    style={[GlobalStyles.input, GlobalStyles.title.h6Regular]}
-                                    onChangeText={onChangePassword}
-                                    value={password}
-                                    placeholder="Vui lòng nhập mật khẩu"
-                                    keyboardType="default"
-                                    secureTextEntry={true}
-                                />
+                                <Stack style={GlobalStyles.inputWrapper}>
+                                    <TextInput
+                                        style={[GlobalStyles.inputPw, GlobalStyles.title.h6Regular]}
+                                        onChangeText={onChangePassword}
+                                        value={password}
+                                        placeholder="Vui lòng nhập mật khẩu"
+                                        keyboardType="default"
+                                        secureTextEntry={showPassword}
+                                    />
+                                    <IconFeather name={showPassword ? 'eye-off' : 'eye'}
+                                                 size={24}
+                                                 color="#9E9E9E"
+                                                 style={GlobalStyles.iconEye}
+                                                 onPress={toggleShowPassword}
+                                    />
+                                </Stack>
                             </Stack>
                             <Text style={[GlobalStyles.title["primary-kpi-semibold"], GlobalStyles.title.inRight]}
                                   onPress={() => {
@@ -62,9 +76,12 @@ const LoginScreen = () => {
                                 mật
                                 khẩu?</Text>
                         </Stack>
-                        <TouchableOpacity disabled={!(text !== "" && password !== "" && isSelected)}>
+                        <TouchableOpacity disabled={!(text !== "" && password !== "")}>
                             <Text
-                                style={text !== "" && password !== "" && isSelected ? GlobalStyles.button : GlobalStyles.buttonDisabled}>
+                                onPress={() => {
+                                    navigation.navigate("MyTabs")
+                                }}
+                                style={text !== "" && password !== "" ? GlobalStyles.button : GlobalStyles.buttonDisabled}>
                                 Đăng nhập
                             </Text>
                         </TouchableOpacity>

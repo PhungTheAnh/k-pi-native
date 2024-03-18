@@ -23,7 +23,7 @@ const ForgetPwScreen = () => {
                 style={{flex: 1}}>
                 <View style={[GlobalStyles.container, {height: SCREEN_HEIGHT}]}>
                     <View style={{flex: 1, marginTop: 48}}>
-                        <Stack style={styles.back}>
+                        <Stack style={GlobalStyles.back}>
                             <IconFeather name="chevron-left" size={24} color="#1F1F1F" onPress={()=>{
                                 navigation.goBack()
                             }}/>
@@ -76,12 +76,6 @@ const styles = StyleSheet.create({
     label: {
         margin: 0,
     },
-    back:{
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between"
-    }
 });
 
 export default ForgetPwScreen;

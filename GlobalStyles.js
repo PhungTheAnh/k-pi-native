@@ -6,14 +6,20 @@ export default StyleSheet.create({
         paddingTop: Platform.OS === 'android' ? 40 : 0,
     },
     container: {
-        height: "auto",
         flex: 1,
         justifyContent: "center",
         backgroundColor: "white",
         paddingBottom: 20,
         paddingHorizontal: 16,
     },
+    containerMain: {
+        flex: 1,
+        backgroundColor: "white",
+        paddingBottom: 20,
+        paddingHorizontal: 16,
+    },
     input: {
+        width: "100%",
         borderWidth: 1,
         borderRadius: 8,
         borderColor: "#F0F0F0",
@@ -21,6 +27,29 @@ export default StyleSheet.create({
         paddingVertical: 10,
         paddingHorizontal: 14,
         color: "#8C8C8C",
+    },
+    inputPw: {
+        width: "100%",
+        borderWidth: 1,
+        borderRadius: 8,
+        borderColor: "#F0F0F0",
+        backgroundColor: "rgba(170, 170, 170, 0.20)",
+        paddingVertical: 10,
+        paddingLeft: 14,
+        paddingRight: 50,
+        color: "#8C8C8C",
+    },
+    inputWrapper:{
+        position: "relative",
+        display: "flex",
+        flexDirection: "row",
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    iconEye: {
+        position: "absolute",
+        right: 4,
+        padding: 10
     },
     button: {
         textAlign: "center",
@@ -39,6 +68,12 @@ export default StyleSheet.create({
         paddingVertical: 11,
         paddingHorizontal: 16,
         borderRadius: 8
+    },
+    back: {
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between"
     },
     title: {
         inRight:{
